@@ -1,21 +1,23 @@
 import React from 'react';
 import ShowTask from "./ShowTask";
-import { connect } from 'react-redux'
+import { useSelector} from 'react-redux'
+import {todoList} from "../redux/todoReducer"
 
-
-const ShowTodoList = ({todoList}) => {
-    if (!todoList.length) {
+const ShowTodoList = () => {
+    const todoArray = useSelector(todoList)
+    if (!todoArray.length) {
         return null
     }
 
-    return todoList.map(task => <ShowTask task={task} key={task.id} />)
+    return todoArray.map(task => <ShowTask task={task} key={task.id} />)
 }
 
-const mapStateToProps = state => {
-    console.log(state);
-    return {
-        todoList: state.tasks
-    }
-}
+// const mapStateToProps = state => {
+//     console.log(state);
+//     return {
+//         todoList: state.tasks
+//     }
+// }
 
-export default connect(mapStateToProps, null)(ShowTodoList)
+// export default connect(mapStateToProps, null)(ShowTodoList)
+export default ShowTodoList
