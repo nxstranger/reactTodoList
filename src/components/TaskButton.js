@@ -1,6 +1,7 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {deleteTask} from "../redux/actions";
+import {useDispatch} from 'react-redux'
+// import {deleteTask} from "../redux/actions";
+import {deleteTask} from '../redux/todoReducer'
 
 const TaskButton = ({taskId}) => {
     const dispatch = useDispatch()
