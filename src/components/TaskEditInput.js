@@ -18,12 +18,14 @@ const TaskEditInput = ({task}) => {
         }
     }
     return (
-        <label>
-            <input defaultValue={task.text}
+        <label className="elem-list-input-label">
+            <input className="elem-list-input"
+                   defaultValue={task.text}
                    autoFocus={true}
                    onBlur={()=>{dispatch(setTaskEditable(""))}}
                    onKeyDown={editTask} />
         </label>
+
     )
 }
 

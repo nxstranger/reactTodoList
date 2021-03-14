@@ -16,8 +16,12 @@ function NewTodoInput(props) {
     }
 
     return (
-        <label htmlFor="new-todo" >
-            <input id="new-todo" type="text" onKeyPress={onKeyPress} />
+        <label>
+            <input
+                className="new-todo-input"
+                type="text"
+                placeholder="add objective"
+                onKeyPress={onKeyPress} />
         </label>
     )
 }

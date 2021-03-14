@@ -1,3 +1,212 @@
+:root {
+  --global-background: #FAFAFA;
+  --action-panel-background: #F0F0F0;
+  --global-font-size: 18px;
+}
+
+html {
+  font-size: var(--global-font-size);
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: var(--global-background);  /**/
+  min-width: 320px;
+}
+
+.app-box {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  font: italic 1em Roboto, serif;
+  padding: 10px 0;
+}
+
+header, footer, main, section {
+  width: calc(100% - 20px);
+  padding: 0 10px;
+}
+
+header, footer{
+  text-align: center;
+  font: italic 1.25em "Fira Sans", serif;
+  margin: 10px auto 0;
+}
+
+.control-panel{
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 10px;
+  background:var(--action-panel-background);
+}
+.control-panel__filters{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.control-panel__filter-button {
+  height: auto;
+  border: none;
+  font: 0.75em "Fira Sans", serif;
+  color: #AAAAAA;
+  background: none;
+  outline: none;
+  border-radius: 5px;
+  padding:  2px;
+}
+.active_filter {
+  color: #000000;
+}
+
+.control-panel__actions {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+.control-panel__control-button{
+  font: 0.75em "Fira Sans", sans-serif;
+  border-radius: 5px;
+  border: 1px darkorange solid;
+  background: var(--global-background);
+  outline: none;
+  padding:  7px 10px;
+}
+
+.control-panel__filter-button:hover{
+  color: #555555;
+  background: var(--action-panel-background);
+}
+
+.control-panel__control-button:hover {
+  background: #cccccc;
+}
+
+.new-todo {
+  background: var(--action-panel-background);
+}
+
+.new-todo-input {
+  height: 30px;
+  width: calc(100% - 20px);
+
+  /*background: red;*/
+  border: none;
+  outline: none;
+  font: italic 1em Roboto, serif;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+.frame-border {
+  font: italic 1em Roboto, serif;
+  padding: 10px 0 10px 10px;
+  border-bottom: 1px darkorange solid;
+}
+
+.todo-list{
+  clear: both;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-object{
+  height: 100%;
+  /*width: 100%;*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  /*background: bisque;*/
+  padding: 15px 10px 5px 10px;
+}
+
+.elem-list-checkbox{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.elem-list-checkbox+label{
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.elem-list-checkbox+label::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  /*flex-shrink: 0;*/
+  /*flex-grow: 0;*/
+  border: 1px solid darkorange;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.elem-list-checkbox:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url(../img/checkbox_white.png);
+}
+
 .completed {
   text-decoration: line-through;
+}
+
+
+.elem-list-input{
+  /*margin-left: 30px;*/
+  height: 100%;
+  /*width: 380px;*/
+  font: italic 1em Roboto, serif;
+  border: none;
+  outline: none;
+}
+
+.elem-list-input-label {
+  clear: both;
+  align-self: center;
+  line-height: 150%;
+  vertical-align: bottom;
+  height: 100%;
+  /*background: darkorange;  !**!*/
+  width: auto;
+  overflow:hidden;
+  word-wrap: break-word;
+}
+
+.elem-list-delete{
+  width: 25px;
+  height: 25px;
+  background: aliceblue;
+  /*border: none;*/
+  outline: none;
+  /*visibility: hidden;*/
+  border: 1px darkorange solid;
+  border-radius: 5px;
+  color: black;
+}
+
+.todo-object:hover > .elem-list-delete{
+  /*background: inherit;*/
+  visibility: visible;
+  /*border: 1px darkorange solid;*/
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
 }

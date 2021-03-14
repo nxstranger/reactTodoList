@@ -8,13 +8,17 @@ const TaskCheckbox = ({taskId, taskStatus}) => {
     // const currentTask = useSelector(state => state.tasks.filter(task => task === taskId))
 
     return (
-        <label>
+        <div>
             <input
-                   type="checkbox"
-                   onChange = { ()=> dispatch(changeTaskStatus(taskId))}
-                   checked={taskStatus} />
-        </label>
-    )
+                id={"label-task-" + taskId}
+                className="elem-list-checkbox"
+                type="checkbox"
+                onChange = { ()=> dispatch(changeTaskStatus(taskId))}
+                checked={taskStatus}
+            />
+            <label htmlFor={"label-task-"+taskId} className="elem-list-checkbox-label"/>
+        </div>
+        )
 }
 
 export default TaskCheckbox

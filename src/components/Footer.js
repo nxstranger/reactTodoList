@@ -6,13 +6,10 @@ const Footer = () => {
     const completed = useSelector(completedTask);
     const unfinished = useSelector(uncompletedTask);
     return(
-        <header className="container">
-            <h3>
-                <span>{completed}</span>
-                Footer
-                <span>{unfinished}</span>
-            </h3>
-        </header>
+        <footer>
+            <span>items left: {completed}</span>
+            <span>completed: {unfinished}</span>
+        </footer>
     )
 }
 

@@ -10,22 +10,22 @@ const ShowTask = ({task}) => {
 
     const boolEditTask = useSelector(editedTaskId)
     const dispatcher = useDispatch()
-
     function editTask(ev) {
         ev.preventDefault();
         dispatcher(setTaskEditable(task.id))
-        console.log("tsk dbclck", ev.target.innerText)
     }
     return (
-        <div>
+        <div className="todo-object frame-border">
             <TaskCheckbox taskId={task.id} taskStatus={task.completed} />
             {
                 (boolEditTask !== "" && boolEditTask === task.id)
                 ? <TaskEditInput isActive={boolEditTask} task={{id:task.id, text: task.text}}  />
-                :  <span className={ task.completed ? "completed" : "" } onDoubleClick={editTask}>{task.text}</span>
+                : <span className={ "elem-list-input-label " + (task.completed ? "completed" : "") }
+                         onDoubleClick={editTask}>
+                        {task.text}
+                  </span>
             }
 
-            {/*<TaskEditToggle taskId={task.id}/>*/}
             <TaskButton taskId={task.id} />
         </div>
     )

@@ -12,12 +12,4 @@ const ShowTodoList = () => {
     return todoArray.map(task => <ShowTask task={task} key={task.id} />)
 }
 
-// const mapStateToProps = state => {
-//     console.log(state);
-//     return {
-//         todoList: state.tasks
-//     }
-// }
-
-// export default connect(mapStateToProps, null)(ShowTodoList)
 export default ShowTodoList

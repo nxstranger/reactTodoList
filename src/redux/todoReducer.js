@@ -1,16 +1,24 @@
-// import {CHANGE_TASK_STATUS, CREATE_NEW_TODO, DELETE_TASK} from "./types";
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
+
 
 function loadFromLocalstorage() {
+
+    const localData = localStorage.getItem('reduxState')
+        ? JSON.parse(localStorage.getItem('reduxState'))
+        : []
+    if (Array.isArray(localData) && localData.length){
+        return localData
+    }
     return [
-        {id: 0, text:"add objective two", completed: true},
-        {id: 1, text: "objective two", completed: false},
-        {id: 2, text:"add one more objective", completed: true},
-        {id: 3, text: "create minions", completed: false},
-        {id: 4, text:"make world's conqueror machine", completed: false},
-        {id: 5, text: "take over the world", completed: false}
+        {id: 1, completed: true, text: "add objective two"},
+        {id: 2, completed: false, text: "objective two"},
+        {id: 3, completed: true, text: "add one more objective"},
+        {id: 4, completed: false, text: "create minions"},
+        {id: 5, completed: false, text: "make world's conqueror machine"},
+        {id: 6, completed: false, text: "take over the world"}
     ]
 }
+
 
 function nextTodoId(todos) {
     const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1)
@@ -36,6 +44,10 @@ export const storeOperator = createSlice({
             state.tasks = state.tasks.map(todo =>
                 (todo.id === action.payload) ? {...todo, completed: !todo.completed} : todo)
         },
+        changeAllTaskStatus(state, action) {
+            state.tasks = state.tasks.map(todo =>
+                (todo.completed !== action.payload) ? {...todo, completed: !todo.completed} : todo)
+        },
         changeTaskText(state, action) {
             state.tasks = state.tasks.map(todo =>
                 (todo.id === action.payload.id) ? {...todo, text: action.payload.text} : todo)
@@ -44,6 +56,10 @@ export const storeOperator = createSlice({
         deleteTask(state, action) {
             state.tasks = state.tasks.filter(todo => todo.id !== action.payload)
         },
+        deleteAllTasks(state) {
+            state.tasks = []
+        },
+
         setTaskEditable(state, action) {
             state.editableTask = action.payload
         },
@@ -53,11 +69,15 @@ export const storeOperator = createSlice({
     },
 });
 
-export const {createNewTodo, changeTaskStatus, deleteTask, changeTaskText, setTaskEditable, setFilterValue } = storeOperator.actions
+export const {
+    createNewTodo, changeTaskStatus, deleteTask, changeTaskText,
+    setTaskEditable, setFilterValue, changeAllTaskStatus, deleteAllTasks } = storeOperator.actions
 
 export const completedTask = state => state.tasks.filter(todo=> todo.completed === true).length;
 export const uncompletedTask = state => state.tasks.filter(todo=> todo.completed === false).length;
 export const editedTaskId = state => state.editableTask
+export const currentFilter = state => state.filter
+
 export const todoList = state => { switch(state.filter){
     case "ALL":
         return state.tasks
