@@ -71,6 +71,7 @@ header, footer{
 }
 
 .control-panel__control-button{
+  width: 90px;
   font: 0.75em "Fira Sans", sans-serif;
   border-radius: 5px;
   border: 1px darkorange solid;
@@ -217,4 +218,40 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.75em;
+}
+
+@media (min-device-width: 768px){
+  .app-box{
+    width: 768px;
+  }
+
+  .control-panel {
+    align-items: center;
+  }
+
+  .control-panel__filters{
+    flex-direction: row;
+    /*background: darkolivegreen;*/
+  }
+  .control-panel__filter-button{
+  margin-left: 20px;
+  }
+
+  .control-panel__actions{
+    flex-direction: row;
+    /*background: darkolivegreen;*/
+  }
+  .control-panel__control-button{
+    height: auto;
+    margin-left: 20px;
+  }
+
+  .elem-list-delete{
+    visibility: hidden;
+  }
+  .elem-list-delete:hover{
+    visibility: unset;
+  }
+
+
 }
