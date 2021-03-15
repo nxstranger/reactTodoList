@@ -5,7 +5,7 @@
 }
 
 html {
-  font-size: var(--global-font-size);
+  font: 1em "Fira Sans", serif;
 }
 
 body{
@@ -20,8 +20,6 @@ body{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-
-  font: italic 1em Roboto, serif;
   padding: 10px 0;
 }
 
@@ -105,7 +103,6 @@ header, footer{
 }
 
 .frame-border {
-  font: italic 1em "Fira Sans", serif;
   padding: 10px 0 10px 10px;
   border-bottom: 1px darkorange solid;
 }
@@ -156,7 +153,6 @@ header, footer{
 }
 
 .elem-list-checkbox:checked+label::before {
-  /*border-color: var(--action-panel-background);*/
   background-color: #0b76ef;
   background-image: url(../img/checkbox_white.png);
 }
@@ -231,7 +227,6 @@ footer {
 
   .control-panel__filters{
     flex-direction: row;
-    /*background: darkolivegreen;*/
   }
   .control-panel__filter-button{
   margin-left: 20px;
@@ -239,7 +234,6 @@ footer {
 
   .control-panel__actions{
     flex-direction: row;
-    /*background: darkolivegreen;*/
   }
   .control-panel__control-button{
     height: auto;
@@ -252,6 +246,4 @@ footer {
   .elem-list-delete:hover{
     visibility: visible;
   }
-
-
 }
