@@ -156,7 +156,7 @@ header, footer{
 }
 
 .elem-list-checkbox:checked+label::before {
-  border-color: var(--global-background);
+  /*border-color: var(--action-panel-background);*/
   background-color: #0b76ef;
   background-image: url(../img/checkbox_white.png);
 }
@@ -201,8 +201,8 @@ header, footer{
 
 
 .elem-list-delete{
-  width: 2em;
-  height: 2em;
+  width: 20px;
+  height: 20px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -250,7 +250,7 @@ footer {
     visibility: hidden;
   }
   .elem-list-delete:hover{
-    visibility: unset;
+    visibility: visible;
   }
 
 

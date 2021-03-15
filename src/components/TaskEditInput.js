@@ -27,7 +27,7 @@ const TaskEditInput = ({task}) => {
             <input className="elem-list-input"
                    defaultValue={task.text}
                    autoFocus={true}
-                   maxLength={"100"}
+                   maxLength={"150"}
                    onBlur={()=>{dispatch(setTaskEditable(""))}}
                    onKeyDown={editTask} />
         </label>

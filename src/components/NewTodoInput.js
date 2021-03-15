@@ -20,6 +20,7 @@ function NewTodoInput(props) {
             <input
                 className="new-todo-input"
                 type="text"
+                maxLength={"150"}
                 placeholder="add objective"
                 onKeyPress={onKeyPress} />
         </label>
