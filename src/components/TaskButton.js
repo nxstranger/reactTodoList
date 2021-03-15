@@ -7,7 +7,6 @@ const TaskButton = ({taskId}) => {
 
     return (
         <button className="elem-list-delete" onClick={ ()=> dispatch(deleteTask(taskId)) }>
-            X
         </button>
     )
 }

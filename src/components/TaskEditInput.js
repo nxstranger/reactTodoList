@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {changeTaskText, setTaskEditable} from '../redux/todoReducer'
 
@@ -17,11 +17,17 @@ const TaskEditInput = ({task}) => {
             dispatch(setTaskEditable(""))
         }
     }
+
+    useEffect (() => {
+        console.log("it works")
+    });
+
     return (
         <label className="elem-list-input-label">
             <input className="elem-list-input"
                    defaultValue={task.text}
                    autoFocus={true}
+                   maxLength={"100"}
                    onBlur={()=>{dispatch(setTaskEditable(""))}}
                    onKeyDown={editTask} />
         </label>

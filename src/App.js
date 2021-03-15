@@ -24,7 +24,6 @@ function App() {
             </main>
             <section className="new-todo">
                 <NewTodoInput />
-
             </section>
             <section className="todo-list">
                 <ShowTodoList />

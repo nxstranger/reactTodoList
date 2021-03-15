@@ -20,10 +20,10 @@ const ShowTask = ({task}) => {
             {
                 (boolEditTask !== "" && boolEditTask === task.id)
                 ? <TaskEditInput isActive={boolEditTask} task={{id:task.id, text: task.text}}  />
-                : <span className={ "elem-list-input-label " + (task.completed ? "completed" : "") }
+                : <label className={ "elem-list-input-label " + (task.completed ? "completed" : "") }
                          onDoubleClick={editTask}>
                         {task.text}
-                  </span>
+                  </label>
             }
 
             <TaskButton taskId={task.id} />
