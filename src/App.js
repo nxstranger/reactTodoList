@@ -1,11 +1,12 @@
+import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ShowTodoList from "./components/ShowTodoList";
 import NewTodoInput from "./components/NewTodoInput";
 import FilterButton from "./components/FilterButton";
 import AllTasksCheckButton from "./components/AllTasksCheckButton"
-import AllTasksCleanButton from "./components/AllTasksCleanButton"
-
+import CleanCompletedButton from "./components/CleanCompletedButton"
+import {ALL,COMPLETED, UNFINISHED} from "./redux/filterTypes";
 
 function App() {
     return (
@@ -13,13 +14,13 @@ function App() {
             <Header />
             <main className="control-panel">
                     <div className={"control-panel__filters"}>
-                        <FilterButton filter={"ALL"} />
-                        <FilterButton filter={"COMPLETED"} />
-                        <FilterButton filter={"UNFINISHED"} />
+                        <FilterButton filter={ALL} key={ALL} />
+                        <FilterButton filter={COMPLETED} key={COMPLETED} />
+                        <FilterButton filter={UNFINISHED} key={UNFINISHED} />
                     </div>
-                    <div className={"control-panel__actions"}>
+                    <div className="control-panel__actions">
                         <AllTasksCheckButton />
-                        <AllTasksCleanButton />
+                        <CleanCompletedButton />
                     </div>
             </main>
             <section className="new-todo">

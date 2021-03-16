@@ -1,12 +1,12 @@
-import {useEffect} from 'react'
-import {useDispatch} from 'react-redux'
-import {changeTaskText, setTaskEditable} from '../redux/todoReducer'
+import React, { useEffect } from 'react';
+import {useDispatch} from 'react-redux';
+import {changeTaskText, setTaskEditable} from '../redux/todoReducer';
 
-const TaskEditInput = ({task}) => {
+const TaskEditInput = (taskObj) => {
     const dispatch = useDispatch()
+    const task = taskObj.task
 
     function editTask(ev) {
-        // ev.preventDefault()
         console.log(ev.key)
         if (ev.code === "Enter" && ev.target.value.trim() !== "") {
             dispatch(changeTaskText({id: task.id, text: ev.target.value.trim()}))

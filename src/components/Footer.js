@@ -7,8 +7,8 @@ const Footer = () => {
     const unfinished = useSelector(uncompletedTask);
     return(
         <footer>
-            <span>items left: {completed}</span>
-            <span>completed: {unfinished}</span>
+            <span>items left: {unfinished}</span>
+            <span>completed: {completed}</span>
         </footer>
     )
 }

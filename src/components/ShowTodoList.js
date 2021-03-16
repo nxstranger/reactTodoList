@@ -9,7 +9,7 @@ const ShowTodoList = () => {
         return null
     }
 
-    return todoArray.map(task => <ShowTask task={task} key={task.id} />)
+    return (todoArray.map(task => <ShowTask task={task} key={task.id} />))
 }
 
 export default ShowTodoList

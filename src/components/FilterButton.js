@@ -1,19 +1,20 @@
-// import React from 'react';
+import React from 'react';
 import {setFilterValue, currentFilter} from '../redux/todoReducer'
 import {useDispatch, useSelector} from "react-redux";
 
 
 
-const FilterButton = ({filter}) => {
+const FilterButton = (filterObject) => {
 
+    const filter = filterObject.filter
     const dispatcher = useDispatch()
     const activeFilter = useSelector(currentFilter)
-    console.log(activeFilter)
-    return (
-        <button className={"control-panel__filter-button " + (activeFilter === filter ? "active_filter": "")} onClick={ ()=> dispatcher(setFilterValue(filter)) }>
+
+    return ( <button className={"control-panel__filter-button " + (activeFilter === filter ? "active_filter": "")}
+                    onClick={ ()=> dispatcher(setFilterValue(filter)) }>
             {filter}
-        </button>
+            </button>
     )
-}
+};
 
 export default FilterButton

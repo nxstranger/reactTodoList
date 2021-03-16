@@ -5,25 +5,25 @@ import {useDispatch, useSelector} from "react-redux";
 const AllTasksCheckButton = () => {
 
     const dispatcher = useDispatch()
-    const completeSelector = useSelector(completedTask)
-    const uncompletedSelector = useSelector(uncompletedTask)
+    const completedCount = useSelector(completedTask)
+    const uncompletedCount = useSelector(uncompletedTask)
+    const todoIsEmpty = (!(completedCount + uncompletedCount))
 
     function changeStatus(){
 
-        if (uncompletedSelector){
+        if (todoIsEmpty) {
+            return
+        }
+        if (uncompletedCount){
             dispatcher(changeAllTaskStatus(true))
-        } else if (completeSelector + uncompletedSelector) {
-            dispatcher(changeAllTaskStatus(false))
         } else {
-
+            dispatcher(changeAllTaskStatus(false))
         }
     }
-
     return (
         <button className="control-panel__control-button" onClick={changeStatus}>
-            {uncompletedSelector || (completeSelector + uncompletedSelector === 0) ? "checkAll" : "UncheckAll"}
+            {uncompletedCount || (completedCount + uncompletedCount === 0) ? "checkAll" : "UncheckAll"}
         </button>
     )
 }
-
 export default AllTasksCheckButton

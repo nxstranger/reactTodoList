@@ -1,11 +1,12 @@
-import React from 'react'
-import {useDispatch} from 'react-redux'
-// import {changeTaskStatus} from "../redux/actions";
-import {changeTaskStatus} from '../redux/todoReducer'
+import React from 'react';
+import {useDispatch} from 'react-redux';
+import {changeTaskStatus} from '../redux/todoReducer';
 
-const TaskCheckbox = ({taskId, taskStatus}) => {
+const TaskCheckbox = (propObj) => {
     const dispatch = useDispatch()
-    // const currentTask = useSelector(state => state.tasks.filter(task => task === taskId))
+
+    const taskId = propObj.taskId
+    const taskStatus = propObj.taskStatus
 
     return (
         <div>
@@ -20,6 +21,7 @@ const TaskCheckbox = ({taskId, taskStatus}) => {
         </div>
         )
 }
+
 
 export default TaskCheckbox
 

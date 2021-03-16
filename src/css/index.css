@@ -1,18 +1,12 @@
-:root {
-  --global-background: #FAFAFA;
-  --action-panel-background: #F0F0F0;
-  --global-font-size: 18px;
-}
-
 html {
-  font: 1em "Fira Sans", serif;
+  font: 18px "Fira Sans", serif;
 }
 
 body{
   margin: 0;
   padding: 0;
   width: 100%;
-  background: var(--global-background);  /**/
+  background: #FAFAFA;
   min-width: 320px;
 }
 
@@ -39,9 +33,9 @@ header, footer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: stretch; /**/
   padding: 10px;
-  background:var(--action-panel-background);
+  background:#F0F0F0;
 }
 .control-panel__filters{
   display: flex;
@@ -69,18 +63,18 @@ header, footer{
 }
 
 .control-panel__control-button{
-  width: 90px;
+  width: 110px;
   font: 0.75em "Fira Sans", sans-serif;
   border-radius: 5px;
   border: 1px darkorange solid;
-  background: var(--global-background);
+  background: #FAFAFA;
   outline: none;
   padding:  7px 10px;
 }
 
 .control-panel__filter-button:hover{
   color: #555555;
-  background: var(--action-panel-background);
+  background: #F0F0F0;
 }
 
 .control-panel__control-button:hover {
@@ -88,7 +82,7 @@ header, footer{
 }
 
 .new-todo {
-  background: var(--action-panel-background);
+  background: #F0F0F0;
 }
 
 .new-todo-input {

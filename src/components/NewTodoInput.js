@@ -1,10 +1,8 @@
 import React from 'react';
 import {useDispatch} from 'react-redux'
-// import {createTodo} from '../redux/actions'
 import {createNewTodo} from '../redux/todoReducer'
 
-function NewTodoInput(props) {
-
+function NewTodoInput() {
     const dispatch = useDispatch();
 
     function onKeyPress(ev){

@@ -1,27 +1,27 @@
 import {createSlice} from '@reduxjs/toolkit';
-
+import {ALL,COMPLETED, UNFINISHED} from "./filterTypes"
 
 function loadFromLocalstorage() {
-
-    const localData = localStorage.getItem('reduxState')
-        ? JSON.parse(localStorage.getItem('reduxState'))
-        : []
-    if (Array.isArray(localData) && localData.length){
-        return localData
+    try {
+        const serializedState = localStorage.getItem('reduxState');
+        if (serializedState === null || serializedState === "[]") {
+            return [
+                {id: 1, completed: true, text: "add objective two"},
+                {id: 2, completed: false, text: "objective two"},
+                {id: 3, completed: true, text: "add one more objective"},
+                {id: 4, completed: false, text: "create minions"},
+                {id: 5, completed: false, text: "make world's conqueror machine"},
+                {id: 6, completed: false, text: "take over the world"}
+            ]
+        }
+        return JSON.parse(serializedState);
+    } catch (err) {
+        return undefined;
     }
-    return [
-        {id: 1, completed: true, text: "add objective two"},
-        {id: 2, completed: false, text: "objective two"},
-        {id: 3, completed: true, text: "add one more objective"},
-        {id: 4, completed: false, text: "create minions"},
-        {id: 5, completed: false, text: "make world's conqueror machine"},
-        {id: 6, completed: false, text: "take over the world"}
-    ]
 }
 
-
 function nextTodoId(todos) {
-    const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1)
+    const maxId = todos.reduce((maxIdReducer, todo) => Math.max(todo.id, maxIdReducer), -1)
     return maxId + 1
 }
 
@@ -30,7 +30,7 @@ export const storeOperator = createSlice({
     initialState: {
         tasks: loadFromLocalstorage(),
         editableTask: "",
-        filter: "ALL"
+        filter: ALL
     },
     reducers: {
         createNewTodo(state, action) {
@@ -56,8 +56,8 @@ export const storeOperator = createSlice({
         deleteTask(state, action) {
             state.tasks = state.tasks.filter(todo => todo.id !== action.payload)
         },
-        deleteAllTasks(state) {
-            state.tasks = []
+        deleteCompletedTasks(state) {
+            state.tasks = state.tasks.filter(todo => todo.completed === false)
         },
 
         setTaskEditable(state, action) {
@@ -71,24 +71,23 @@ export const storeOperator = createSlice({
 
 export const {
     createNewTodo, changeTaskStatus, deleteTask, changeTaskText,
-    setTaskEditable, setFilterValue, changeAllTaskStatus, deleteAllTasks } = storeOperator.actions
+    setTaskEditable, setFilterValue, changeAllTaskStatus, deleteCompletedTasks } = storeOperator.actions
 
 export const completedTask = state => state.tasks.filter(todo=> todo.completed === true).length;
 export const uncompletedTask = state => state.tasks.filter(todo=> todo.completed === false).length;
-export const editedTaskId = state => state.editableTask
+export const editableTaskId = state => state.editableTask
 export const currentFilter = state => state.filter
 
 export const todoList = state => { switch(state.filter){
-    case "ALL":
+    case ALL:
         return state.tasks
-    case "COMPLETED":
+    case COMPLETED:
         return state.tasks.filter(todo => todo.completed === true)
-    case "UNFINISHED":
+    case UNFINISHED:
         return state.tasks.filter(todo => todo.completed === false)
     default:
         return state.tasks
 }}
-
 
 export default storeOperator.reducer
 
